@@ -3,7 +3,7 @@ package com.kuky.comvvmhelper.ui.activity
 import android.os.Bundle
 import com.google.gson.Gson
 import com.kk.android.comvvmhelper.anno.ActivityConfig
-import com.kk.android.comvvmhelper.anno.StatusBarTextColorMode
+import com.kk.android.comvvmhelper.anno.WindowState
 import com.kk.android.comvvmhelper.extension.safeLaunch
 import com.kk.android.comvvmhelper.helper.ePrint
 import com.kk.android.comvvmhelper.ui.BaseActivity
@@ -16,7 +16,7 @@ import com.kuky.comvvmhelper.databinding.ActivityImageDisplayBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 
-@ActivityConfig(statusBarColorString = "#AAAAAA", statusBarTextColorMode = StatusBarTextColorMode.Light)
+@ActivityConfig(WindowState.TRANSLUCENT_STATUS_BAR)
 class ImageDisplayActivity : BaseActivity<ActivityImageDisplayBinding>() {
 
     data class User(val name: String)
