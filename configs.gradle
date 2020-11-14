@@ -18,7 +18,7 @@ ext{
         retrofit             : "com.squareup.retrofit2:retrofit:2.9.0",
         gsonConverter        : "com.squareup.retrofit2:converter-gson:2.9.0",
         okLogginInterceptor  : "com.squareup.okhttp3:logging-interceptor:4.8.1",
-        dataStoreCore        : "androidx.datastore:datastore-core:1.0.0-alpha02",
-        dataStorePreference  : "androidx.datastore:datastore-preferences:1.0.0-alpha02",
+        dataStoreCore        : "androidx.datastore:datastore-core:1.0.0-alpha03",
+        dataStorePreference  : "androidx.datastore:datastore-preferences:1.0.0-alpha03",
     ]
 }
