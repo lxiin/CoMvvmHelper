@@ -3,9 +3,10 @@ package com.kuky.comvvmhelper
 import android.app.Application
 import com.kk.android.comvvmhelper.startCov
 import com.kuky.comvvmhelper.di.adapterModule
+import com.kuky.comvvmhelper.di.dataSourceModule
+import com.kuky.comvvmhelper.di.repositoryModule
 import com.kuky.comvvmhelper.di.viewModelModule
 import com.kuky.comvvmhelper.helper.GlideEngine
-import org.koin.dsl.module
 
 /**
  * @author kuky.
@@ -20,7 +21,7 @@ class App : Application() {
         startCov {
             loadEngine = GlideEngine() // image load engine for ImageViewBinding, if not use ignore this param
 
-            koinModules = mutableListOf(viewModelModule, adapterModule) // your koin modules
+            koinModules = mutableListOf(viewModelModule, adapterModule, dataSourceModule, repositoryModule) // your koin modules
 
             baseUrl = "https://www.wanandroid.com/" // your retrofit base url if use
 

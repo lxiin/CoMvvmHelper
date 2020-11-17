@@ -15,7 +15,7 @@ allprojects {
 ```groovy
 dependencies {
     // current latest release version is 0.2.0
-    // current latest alpha version is 0.2.1-alpha01
+    // current latest alpha version is 0.2.1-alpha02
 	implementation 'com.github.kukyxs:CoMvvmHelper:version'
 }
 ```
@@ -27,6 +27,7 @@ alpha will support some alpha libs, such as DataStore and so on.
 
 ## Alpha version Supported
 1. DataStore -> see [DataStoreUtils](https://github.com/kukyxs/CoMvvmHelper/blob/alpha/comvvmhelper/src/main/java/com/kk/android/comvvmhelper/utils/DataStoreUtils.kt)
+2. Paging3
 
 
 ## How to use
