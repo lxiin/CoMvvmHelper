@@ -23,7 +23,7 @@ class App : Application() {
 
             koinModules = mutableListOf(viewModelModule, adapterModule, dataSourceModule, repositoryModule) // your koin modules
 
-            baseUrl = "https://www.wanandroid.com/" // your retrofit base url if use
+            baseUrl = Constant.WAN_URL // your retrofit base url if use
 
 //            koinPropertiesFile = "" // koin properties file
 //            client = OkHttpClient.Builder().build() // OkHttp or Retrofit client
