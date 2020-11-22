@@ -1,8 +1,13 @@
 package com.kk.android.comvvmhelper.utils
 
 import android.content.Context
-import androidx.datastore.DataStore
-import androidx.datastore.preferences.*
+import android.util.Log
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.emptyPreferences
+import androidx.datastore.preferences.core.preferencesKey
+import androidx.datastore.preferences.createDataStore
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -23,7 +28,7 @@ inline fun <reified T : Any> Context.fetchDataStoreData(
 ): Flow<T?> = defaultDataStore().data.catch {
     emit(emptyPreferences())
 }.map { pref ->
-    pref[preferencesKey(keyName)] ?: default?.invoke()
+    pref[preferencesKey<T>(keyName)] ?: default?.invoke()
 }
 
 suspend inline fun <reified T : Any> Context.saveToDataStore(keyName: String, value: T) =
@@ -37,9 +42,11 @@ suspend inline fun <reified T : Any> Context.saveToDataStore(keyName: String, va
 inline fun <reified T : Any, reified R : Any> Context.fetchTransDataFromDataStore(
     keyName: String, noinline trans: (T?) -> R?, noinline default: (() -> R?)? = null
 ): Flow<R?> = defaultDataStore().data.catch {
+    Log.e("dataStore", "error catch", it)
     emit(emptyPreferences())
 }.map { pref ->
-    trans.invoke(pref[preferencesKey(keyName)]) ?: default?.invoke()
+    Log.e("dataStore", preferencesKey<T>(keyName).toString())
+    trans.invoke(pref[preferencesKey<T>(keyName)]) ?: default?.invoke()
 }
 
 suspend inline fun <reified T : Any> Context.saveTransToDataStore(
