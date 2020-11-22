@@ -1,7 +1,6 @@
 package com.kk.android.comvvmhelper.utils
 
 import android.content.Context
-import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
@@ -31,24 +30,29 @@ inline fun <reified T : Any> Context.fetchDataStoreData(
     pref[preferencesKey<T>(keyName)] ?: default?.invoke()
 }
 
+/**
+ * only support Int, Long, Boolean, Float, Double, String
+ */
 suspend inline fun <reified T : Any> Context.saveToDataStore(keyName: String, value: T) =
     defaultDataStore().edit { store ->
         store[preferencesKey<T>(keyName)] = value
     }
 
 /**
- * T only support Int, Long, Boolean, Float, Double, String
+ * T: class Type
+ * @param trans the func translating nonnull String value to instance of T
  */
-inline fun <reified T : Any, reified R : Any> Context.fetchTransDataFromDataStore(
-    keyName: String, noinline trans: (T?) -> R?, noinline default: (() -> R?)? = null
-): Flow<R?> = defaultDataStore().data.catch {
-    Log.e("dataStore", "error catch", it)
+inline fun <reified T : Any> Context.fetchTransDataFromDataStore(
+    keyName: String, noinline trans: (String) -> T?, noinline default: (() -> T?)? = null
+): Flow<T?> = defaultDataStore().data.catch {
     emit(emptyPreferences())
 }.map { pref ->
-    Log.e("dataStore", preferencesKey<T>(keyName).toString())
-    trans.invoke(pref[preferencesKey<T>(keyName)]) ?: default?.invoke()
+    trans.invoke(pref[preferencesKey(keyName)] ?: "") ?: default?.invoke()
 }
 
+/**
+ * @param trans the func translating instance of T to String
+ */
 suspend inline fun <reified T : Any> Context.saveTransToDataStore(
     keyName: String, value: T, noinline trans: (T?) -> String = { Gson().toJson(it) }
 ) {
