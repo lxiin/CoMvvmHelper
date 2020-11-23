@@ -28,7 +28,7 @@ class ImageDisplayActivity : BaseActivity<ActivityImageDisplayBinding>() {
                 delay(1000)
 
                 fetchDataStoreData<String>("username")
-                fetchTransDataFromDataStore<String, User>("user", { ParseUtils.instance().parseFromJson(it ?: "", User::class.java) })
+                fetchTransDataFromDataStore("user", { ParseUtils.instance().parseFromJson(it, User::class.java) })
                     .collect { ePrint { "user: $it" } }
             }
 
