@@ -24,9 +24,9 @@ class ParseUtils {
 
     fun <T> parseToJson(value: T): String = gson.toJson(value)
 
-    fun <T> parseFromJson(json: String, typeOfT: Type): T = gson.fromJson(json, typeOfT)
+    fun <T> parseFromJson(json: String, typeOfT: Type): T? = gson.fromJson(json, typeOfT)
 
-    fun <T> parseFromJson(json: String, classOfT: Class<T>): T = gson.fromJson(json, classOfT)
+    fun <T> parseFromJson(json: String, classOfT: Class<T>): T? = gson.fromJson(json, classOfT)
 
     private fun generateGson() = GsonBuilder()
         .setLenient()
