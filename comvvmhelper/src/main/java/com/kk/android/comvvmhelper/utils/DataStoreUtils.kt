@@ -2,10 +2,7 @@ package com.kk.android.comvvmhelper.utils
 
 import android.content.Context
 import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.emptyPreferences
-import androidx.datastore.preferences.core.preferencesKey
+import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.createDataStore
 import com.google.gson.Gson
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -17,6 +14,19 @@ import kotlinx.coroutines.flow.*
  */
 fun Context.defaultDataStore(): DataStore<Preferences> =
     createDataStore(name = "${packageName}_data_store")
+
+//@Suppress("UNCHECKED_CAST")
+//inline fun <reified T : Any> preferencesKey(name: String): Preferences.Key<T> {
+//    return when (T::class) {
+//        Int::class -> intPreferencesKey(name)
+//        String::class -> stringPreferencesKey(name)
+//        Boolean::class -> booleanPreferencesKey(name)
+//        Float::class -> floatPreferencesKey(name)
+//        Long::class -> longPreferencesKey(name)
+//        Double::class -> doublePreferencesKey(name)
+//        else -> throw IllegalArgumentException()
+//    } as Preferences.Key<T>
+//}
 
 /**
  * only support Int, Long, Boolean, Float, Double, String
@@ -32,6 +42,16 @@ inline fun <reified T : Any> Context.fetchDataStoreData(
     }.collectLatest { send(it) }
 }
 
+//@OptIn(ExperimentalCoroutinesApi::class)
+//fun Context.fetchStringSetData(keyName: String, default: (() -> Set<String>?)? = null):
+//        Flow<Set<String>> = channelFlow {
+//    defaultDataStore().data.catch {
+//        emit(emptyPreferences())
+//    }.map { pref ->
+//        pref[stringSetPreferencesKey(keyName)] ?: default?.invoke() ?: mutableSetOf()
+//    }.collectLatest { send(it) }
+//}
+
 /**
  * only support Int, Long, Boolean, Float, Double, String
  */
@@ -39,6 +59,11 @@ suspend inline fun <reified T : Any> Context.saveToDataStore(keyName: String, va
     defaultDataStore().edit { store ->
         store[preferencesKey<T>(keyName)] = value
     }
+
+//suspend fun Context.saveStringsetToDataStore(keyName: String, value: Set<String>? = null) =
+//    defaultDataStore().edit { store ->
+//        store[stringSetPreferencesKey(keyName)] = value ?: mutableSetOf()
+//    }
 
 /**
  * T: class Type

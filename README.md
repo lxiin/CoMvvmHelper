@@ -15,7 +15,7 @@ allprojects {
 ```groovy
 dependencies {
     // current latest release version is 0.3.0
-    // current latest alpha version is 0.3.0-alpha01
+    // current latest alpha version is 0.3.0-alpha02
 	implementation 'com.github.kukyxs:CoMvvmHelper:version'
 }
 ```
