@@ -10,9 +10,8 @@ import com.kk.android.comvvmhelper.listener.MultiLayoutImp
  * @description
  */
 abstract class BaseMultiLayoutPagingAdapter(
-    callback: DiffUtil.ItemCallback<MultiLayoutImp>,
-    openDebounce: Boolean = true, debounceDuration: Long = 300
-) : BasePagingAdapter<MultiLayoutImp>(callback, openDebounce, debounceDuration) {
+    callback: DiffUtil.ItemCallback<MultiLayoutImp>
+) : BasePagingAdapter<MultiLayoutImp>(callback) {
 
     private val mLayouts = SparseIntArray()
 

@@ -2,7 +2,6 @@ package com.kuky.comvvmhelper.ui.activity
 
 import android.os.Bundle
 import com.kk.android.comvvmhelper.anno.ActivityConfig
-import com.kk.android.comvvmhelper.anno.WindowState
 import com.kk.android.comvvmhelper.extension.safeLaunch
 import com.kk.android.comvvmhelper.helper.ePrint
 import com.kk.android.comvvmhelper.ui.BaseActivity
