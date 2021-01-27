@@ -3,10 +3,13 @@ package com.kuky.comvvmhelper.di
 import com.kk.android.comvvmhelper.helper.createService
 import com.kuky.comvvmhelper.helper.ApiService
 import com.kuky.comvvmhelper.repository.ArticleRepository
+import com.kuky.comvvmhelper.entity.GuideDisplay
+import com.kuky.comvvmhelper.ui.activity.GuideActivity
 import com.kuky.comvvmhelper.ui.activity.MultiItemDisplayActivity
 import com.kuky.comvvmhelper.ui.activity.PagingDemoActivity
 import com.kuky.comvvmhelper.ui.activity.RecyclerViewDemoActivity
 import com.kuky.comvvmhelper.ui.adapter.ArticlePagingAdapter
+import com.kuky.comvvmhelper.ui.adapter.GuideAdapter
 import com.kuky.comvvmhelper.ui.adapter.MultiDisplayAdapter
 import com.kuky.comvvmhelper.ui.adapter.MultiLayoutAdapter
 import com.kuky.comvvmhelper.ui.adapter.StringAdapter
@@ -39,6 +42,10 @@ val viewModelModule = module {
 }
 
 val adapterModule = module {
+    scope<GuideActivity> {
+        scoped { (items: MutableList<GuideDisplay>) -> GuideAdapter(items) }
+    }
+
     scope<RecyclerViewDemoActivity> {
         scoped { StringAdapter() }
 

@@ -6,7 +6,6 @@ import com.kuky.comvvmhelper.di.adapterModule
 import com.kuky.comvvmhelper.di.dataSourceModule
 import com.kuky.comvvmhelper.di.repositoryModule
 import com.kuky.comvvmhelper.di.viewModelModule
-import com.kuky.comvvmhelper.helper.CoilEngine
 import com.kuky.comvvmhelper.helper.GlideEngine
 
 /**
@@ -20,7 +19,7 @@ class App : Application() {
         super.onCreate()
 
         startCov {
-            loadEngine = CoilEngine() // image load engine for ImageViewBinding, if not use ignore this param
+            loadEngine = GlideEngine() // image load engine for ImageViewBinding, if not use ignore this param
 
             koinModules = mutableListOf(viewModelModule, adapterModule, dataSourceModule, repositoryModule) // your koin modules
 

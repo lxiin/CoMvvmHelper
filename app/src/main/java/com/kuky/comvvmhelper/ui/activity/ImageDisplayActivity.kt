@@ -12,7 +12,7 @@ import com.kuky.comvvmhelper.databinding.ActivityImageDisplayBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 
-@ActivityConfig(WindowState.TRANSLUCENT_STATUS_BAR)
+@ActivityConfig(statusBarColorString = "#008577")
 class ImageDisplayActivity : BaseActivity<ActivityImageDisplayBinding>() {
 
     data class User(val name: String)
@@ -20,6 +20,8 @@ class ImageDisplayActivity : BaseActivity<ActivityImageDisplayBinding>() {
     override fun layoutId() = R.layout.activity_image_display
 
     override fun initActivity(savedInstanceState: Bundle?) {
+        mBinding.imagePath = "https://t7.baidu.com/it/u=4162611394,4275913936&fm=193&f=GIF"
+
         safeLaunch {
             block = {
                 saveToDataStore("username", "kuky")
