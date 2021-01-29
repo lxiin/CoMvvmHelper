@@ -27,7 +27,8 @@ class GuideActivity : BaseActivity<ActivityGuideBinding>() {
         GuideDisplay("ShapeDisplay", randomDrawable(), ShapeDisplayActivity::class.java),
         GuideDisplay("PermissionRequest", randomDrawable(), PermissionDemoActivity::class.java),
         GuideDisplay("RecyclerViewList", randomDrawable(), RecyclerViewDemoActivity::class.java, true, "Multi Layout"),
-        GuideDisplay("MultiManagerDisplay", randomDrawable(), MultiItemDisplayActivity::class.java)
+        GuideDisplay("MultiManagerDisplay", randomDrawable(), MultiItemDisplayActivity::class.java),
+        GuideDisplay("PagingListDisplay", randomDrawable(), PagingDemoActivity::class.java)
     )
 
     private val mGuideAdapter by lifecycleScope.inject<GuideAdapter> {

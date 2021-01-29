@@ -2,6 +2,7 @@ package com.kuky.comvvmhelper.ui.activity
 
 import android.os.Bundle
 import androidx.paging.LoadState
+import com.kk.android.comvvmhelper.anno.ActivityConfig
 import com.kk.android.comvvmhelper.ui.BaseActivity
 import com.kuky.comvvmhelper.R
 import com.kuky.comvvmhelper.databinding.ActivityPagingDemoBinding
@@ -15,6 +16,7 @@ import org.jetbrains.anko.toast
 import org.koin.androidx.scope.lifecycleScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@ActivityConfig(statusBarColorString = "#008577")
 class PagingDemoActivity : BaseActivity<ActivityPagingDemoBinding>() {
 
     private val mViewModel by viewModel<PagingViewModel>()
