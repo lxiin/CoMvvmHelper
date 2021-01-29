@@ -1,8 +1,10 @@
 package com.kuky.comvvmhelper.pagingsource
 
 import androidx.paging.PagingSource
+import androidx.paging.PagingState
 import com.kk.android.comvvmhelper.extension.otherwise
 import com.kk.android.comvvmhelper.extension.yes
+import com.kk.android.comvvmhelper.utils.LogUtils
 import com.kuky.comvvmhelper.entity.ArticleDetail
 import com.kuky.comvvmhelper.repository.ArticleRepository
 
@@ -26,4 +28,6 @@ class ArticlePagingSource(private val repository: ArticleRepository) : PagingSou
             LoadResult.Error(e)
         }
     }
+
+    override fun getRefreshKey(state: PagingState<Int, ArticleDetail>): Int? = state.anchorPosition
 }

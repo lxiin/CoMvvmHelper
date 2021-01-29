@@ -23,7 +23,7 @@ class GuideActivity : BaseActivity<ActivityGuideBinding>() {
 
     private val mGuideItems = mutableListOf(
         GuideDisplay("Network", randomDrawable(), HttpDemoActivity::class.java, true, "Show Download"),
-        GuideDisplay("ImageDisplay", randomDrawable(), ImageDisplayActivity::class.java),
+        GuideDisplay("ImageDisplay", randomDrawable(), ImageDisplayActivity::class.java, true, "Save Entity"),
         GuideDisplay("ShapeDisplay", randomDrawable(), ShapeDisplayActivity::class.java),
         GuideDisplay("PermissionRequest", randomDrawable(), PermissionDemoActivity::class.java),
         GuideDisplay("RecyclerViewList", randomDrawable(), RecyclerViewDemoActivity::class.java, true, "Multi Layout"),
